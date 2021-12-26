@@ -4,8 +4,6 @@ from . import views
 urlpatterns = [
     path('about/', views.sobre_mi, name = 'sobre_mi'),
     path('index/', views.index, name = 'index'),
-    path('login/', views.login_req, name = 'login'),
-    path('login_fail/', views.login_fail, name = 'login_fail'),
     path('pages/', views.listas, name = 'lista'),
     
     path('lista_album/', views.AlbumListView.as_view(), name='lista_album'),
@@ -21,5 +19,11 @@ urlpatterns = [
     path('lista_pelicula/', views.PeliculaListView.as_view(), name='lista_pelicula'),
     path('crear_pelicula/', views.PeliculaCreateView.as_view(), name='crear_pelicula'),
     path('eliminar_pelicula/<int:pk>', views.PeliculaDeleteView.as_view(), name='eliminar_pelicula'),
-    path('detalle_pelicula/<int:pk>', views.PeliculaDetailView.as_view(), name='detalle_pelicula')
+    path('detalle_pelicula/<int:pk>', views.PeliculaDetailView.as_view(), name='detalle_pelicula'),
+    
+    path('login/', views.login_req, name = 'login'),
+    path('login_fail/', views.login_fail, name = 'login_fail'),
+    path('registro/', views.registro_req, name = 'registro'),
+    path('editar_user/', views.editar_usuario, name = 'editar'),
+    path('editar_avatar/', views.editar_avatar, name = 'editar_avatar')
 ]
