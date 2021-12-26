@@ -1,0 +1,19 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>lista de álbumes</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <p>Título: {{album.titulo}}</p>
+    <p>Artista: {{album.autor}}</p>
+    <p>Año de publicación: {{album.anio}}</p>
+    <p>Género: {{album.genero}}</p>
+    <p>
+        <a href={% url 'lista_album' %}>Regresar</a>
+    </p>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>lista de álbumes</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'crear_album' %}>Agregar álbum</a>
+
+    <ul>
+        {% for album in object_list %}
+            <li>
+                <p>{{album.autor}} - {{album.titulo}} ({{album.anio}})</p>
+                <p>
+                    <a href={% url 'detalle_album' album.id %}>Ver</a>
+                    <a href={% url 'eliminar_album' album.id %}>Eliminar</a>
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>lista de álbumes</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <p>Título: {{pelicula.titulo}}</p>
+    <p>Director: {{pelicula.dir}}</p>
+    <p>Año de estreno: {{pelicula.anio}}</p>
+    <p>Duración (en minutros): {{pelicula.dur}}</p>
+    <p>
+        <a href={% url 'lista_pelicula' %}>Regresar</a>
+    </p>
+
+
+{% endblock %}

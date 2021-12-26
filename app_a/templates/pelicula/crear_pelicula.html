@@ -1,0 +1,22 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>crear álbum</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'lista_pelicula' %}>Ir al listado de películas</a>
+    {% if pelicula %}
+        <p>
+            {{pelicula.titulo}} {{pelicula.autor}}
+        </p>
+    {% endif %}
+    <form action={% url 'crear_pelicula' %} method='POST'> {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type='submit' placeholder='Agregar Película'>
+    </form>
+
+{% endblock %}

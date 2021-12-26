@@ -1,0 +1,20 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>borrar álbum</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'lista_album' %}>Ir al listado de álbumes</a>
+    {% if album %}
+        <p>
+            {{album.autor}} - {{album.titulo}} ({{album.anio}})
+        </p>
+    {% endif %}
+    <form method='POST'> {% csrf_token %}
+        ¿Estás seguro que quieres eliminar este álbum?
+        <input type='submit' placeholder='Eliminar álbum'>
+    </form>
+
+{% endblock %}

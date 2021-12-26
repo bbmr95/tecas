@@ -1,0 +1,17 @@
+{% extends 'tem/base.html' %}
+
+
+{% block titulo %}
+    <title>listado de entradas</title>
+{% endblock %}
+
+
+{% block body %}
+    <div>
+        <ul class='lista'>
+            <li><a href={% url 'lista_album' %}>Discoteca</a><br></li>
+            <li><a href={% url 'lista_libro' %}>Biblioteca</a><br></li>
+            <li><a href={% url 'lista_pelicula' %}>Filmoteca</a><br></li>
+        </ul>
+    </div>
+{% endblock %}

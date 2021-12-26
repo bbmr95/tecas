@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset='UTF-8'>
+    <meta http-equiv="X-UA-Compatible" content='IE-edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    {% block titulo %} {% endblock %}
+    <link href={% static 'stc/base.css' %} rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <a href={% url 'index' %}>
+            <div class='d'>
+                <h1>-tecas.html</h1>
+                <h4>obras en todas sus formas</h4>
+            </div>
+        </a>
+        <ul class='posx'>
+            <li style='display:inline-block'><a href={% url 'login' %}>login</a></li>
+            <li style='display:inline-block'><a href={% url 'sobre_mi' %}>sobre mi</a></li>
+            <li style='display:inline-block'><a href={% url 'lista' %}>listas</a></li>
+        </ul>
+    </header>
+    
+
+
+    
+    {% block body %}
+    {% endblock %}
+
+</body>
+</html>

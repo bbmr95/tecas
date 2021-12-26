@@ -1,0 +1,22 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>crear álbum</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'lista_libro' %}>Ir al listado de libros</a>
+    {% if libro %}
+        <p>
+            {{libro.titulo}} {{libro.autor}}
+        </p>
+    {% endif %}
+    <form action={% url 'crear_libro' %} method='POST'> {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type='submit' placeholder='Agregar Libro'>
+    </form>
+
+{% endblock %}

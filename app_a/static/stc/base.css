@@ -1,0 +1,46 @@
+body {
+    font-size: .875rem;
+    font-family: Verdana;
+  }
+
+header {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    margin-bottom: 30px;
+    vertical-align: middle;
+}
+
+.poema {
+    text-align: center;
+}
+
+.desc_poeta {
+    text-align: center;
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+.d {
+    display: inline-block;
+}
+
+.posx {
+    float: right; 
+    position: absolute; 
+    left: 80%; 
+    top: 5%;
+}
+
+li {
+    margin: 0px 10px 0px 10px;
+    padding: 2px 0px 2px 0px;
+}
+
+a {
+    text-decoration: none;
+}

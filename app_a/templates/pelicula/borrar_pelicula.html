@@ -1,0 +1,20 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>borrar libro</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'lista_pelicula' %}>Ir al listado de películas</a>
+    {% if pelicula %}
+        <p>
+            {{pelicula.dir}} - {{pelicula.titulo}} ({{pelicula.anio}})
+        </p>
+    {% endif %}
+    <form method='POST'> {% csrf_token %}
+        ¿Estás seguro que quieres eliminar esta película?
+        <input type='submit' placeholder='Eliminar pelicula'>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>borrar libro</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'lista_libro' %}>Ir al listado de libros</a>
+    {% if libro %}
+        <p>
+            {{libro.autor}} - {{libro.titulo}} ({{libro.anio}})
+        </p>
+    {% endif %}
+    <form method='POST'> {% csrf_token %}
+        ¿Estás seguro que quieres eliminar este libro?
+        <input type='submit' placeholder='Eliminar libro'>
+    </form>
+
+{% endblock %}
