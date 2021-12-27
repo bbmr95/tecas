@@ -7,8 +7,8 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, CreateView 
 
-from .models import Album, Libro, Pelicula, Avatar
-from .forms import FormularioAlbum, FormularioPelicula, FormularioLibro, RegistroUsuario, EditarUsuario, AvatarForm
+from .models import Album, Libro, Pelicula#, Avatar
+from .forms import FormularioAlbum, FormularioPelicula, FormularioLibro, RegistroUsuario, EditarUsuario#, AvatarForm
 
 
 
@@ -78,23 +78,28 @@ def editar_usuario(request):
     return render(request, 'tem/editar_usuario.html', {'form': form})
 
 @login_required
-def editar_avatar(request):
-    usuario = request.user
+def info_usuario(request):  
+    return render(request, 'tem/info_usuario.html')
+
+
+# @login_required
+# def editar_avatar(request):
+#     usuario = request.user
     
-    if request.method == 'POST':
-        form = AvatarForm(request.POST, request.FILES)
+#     if request.method == 'POST':
+#         form = AvatarForm(request.POST, request.FILES)
         
-        if form.is_valid():
-            avatar = Avatar.object.get(user=usuario)
-            avatar.avatar = form.cleaned_data['avatar']
-            avatar.save()
+#         if form.is_valid():
+#             avatar = Avatar.object.get(user=usuario)
+#             avatar.avatar = form.cleaned_data['avatar']
+#             avatar.save()
             
-            return render(request, 'tem/index.html',
-                          {'tiene_mensaje':True, 'mensaje':f'Se cargo correctamente el avatar', 'url_avatar': avatar.avatar.url})
-    else:
-        form = AvatarForm()
+#             return render(request, 'tem/index.html',
+#                           {'tiene_mensaje':True, 'mensaje':f'Se cargo correctamente el avatar', 'url_avatar': avatar.avatar.url})
+#     else:
+#         form = AvatarForm()
     
-    return render(request, 'tem/editar_avatar.html', {'form':form})
+#     return render(request, 'tem/editar_avatar.html', {'form':form})
             
 
 def login_fail(request):
@@ -105,13 +110,13 @@ def listas(request):
 
 class AlbumCreateView(CreateView):
     model = Album
-    success_url = '/app_a/lista_album'
-    fields = ['titulo','anio','autor','genero']
+    success_url = '/lista_album'
+    fields = ['titulo','anio','autor','genero', 'portada']
     template_name = 'album/crear_album.html'
     
 class AlbumDeleteView(DeleteView):
     model = Album
-    success_url = '/app_a/lista_album'
+    success_url = '/lista_album'
     template_name = 'album/borrar_album.html'
 
 class AlbumDetailView(DetailView):
@@ -125,13 +130,13 @@ class AlbumListView(ListView):
 
 class LibroCreateView(CreateView):
     model = Libro
-    success_url = '/app_a/lista_libro'
-    fields = ['titulo','anio','autor','pais']
+    success_url = '/lista_libro'
+    fields = ['titulo','anio','autor','pais', 'portada']
     template_name = 'libro/crear_libro.html'
     
 class LibroDeleteView(DeleteView):
     model = Libro
-    success_url = '/app_a/lista_libro'
+    success_url = '/lista_libro'
     template_name = 'libro/borrar_libro.html'
 
 class LibroDetailView(DetailView):
@@ -145,13 +150,13 @@ class LibroListView(ListView):
 
 class PeliculaCreateView(CreateView):
     model = Pelicula
-    success_url = '/app_a/lista_pelicula'
-    fields = ['titulo','anio','dir','dur']
+    success_url = '/lista_pelicula'
+    fields = ['titulo','anio','dir','dur', 'portada']
     template_name = 'pelicula/crear_pelicula.html'
     
 class PeliculaDeleteView(DeleteView):
     model = Pelicula
-    success_url = '/app_a/lista_pelicula'
+    success_url = '/lista_pelicula'
     template_name = 'pelicula/borrar_pelicula.html'
 
 class PeliculaDetailView(DetailView):

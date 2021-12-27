@@ -6,14 +6,16 @@
 
 
 {% block body %}
-
-    <p>Título: {{libro.titulo}}</p>
-    <p>Artista: {{libro.autor}}</p>
-    <p>País de procedencia: {{libro.pais}}</p>
-    <p>Año de publicación: {{libro.anio}}</p>
-    <p>
-        <a href={% url 'lista_libro' %}>Regresar</a>
-    </p>
+    <div class='media'><img src='{{libro.portada.url}}' style='width:100%'></div>
+    <div style='display=inline-block'>
+        <p>Título: {{libro.titulo}}</p>
+        <p>Artista: {{libro.autor}}</p>
+        <p>País de procedencia: {{libro.pais}}</p>
+        <p>Año de publicación: {{libro.anio}}</p>
+        <p>
+            <a href={% url 'lista_libro' %}>Regresar</a>
+        </p>
+    </div>
 
 
 {% endblock %}

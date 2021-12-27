@@ -7,6 +7,7 @@
 
 {% block body %}
     <a href={% url 'crear_libro' %}>Agregar libro</a>
+    <a href={% url 'lista' %}>Regresar a las tecas</a>
 
     <ul>
         {% for libro in object_list %}
@@ -17,6 +18,8 @@
                     <a href={% url 'eliminar_libro' libro.id %}>Eliminar</a>
                 </p>
             </li>
+        {% empty %}
+            <li><h3>Aún no hay libros registrados</h3></li>
         {% endfor %}
     </ul>
 

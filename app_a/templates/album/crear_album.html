@@ -12,7 +12,7 @@
             {{album.titulo}} {{album.autor}}
         </p>
     {% endif %}
-    <form action={% url 'crear_album' %} method='POST'> {% csrf_token %}
+    <form action={% url 'crear_album' %} method='POST' enctype='multipart/form-data'> {% csrf_token %}
         <table>
             {{form.as_table}}
         </table>

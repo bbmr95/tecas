@@ -7,6 +7,7 @@
 
 {% block body %}
     <a href={% url 'crear_pelicula' %}>Agregar película</a>
+    <a href={% url 'lista' %}>Regresar a las tecas</a>
 
     <ul>
         {% for pelicula in object_list %}
@@ -17,6 +18,8 @@
                     <a href={% url 'eliminar_pelicula' pelicula.id %}>Eliminar</a>
                 </p>
             </li>
+        {% empty %}
+            <li><h3>Aún no hay películas registradas</h3></li>
         {% endfor %}
     </ul>
 

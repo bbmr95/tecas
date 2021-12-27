@@ -10,7 +10,7 @@
         <h3>{{mensaje}}</h3>
     {% endif %}
 
-    <form action='' method='POST'> {% csrf_token %}
+    <form action='' method='POST' enctype='multipart/form-data'> {% csrf_token %}
         <table>
             {{form}}
         </table>

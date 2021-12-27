@@ -12,7 +12,7 @@
             {{pelicula.titulo}} {{pelicula.autor}}
         </p>
     {% endif %}
-    <form action={% url 'crear_pelicula' %} method='POST'> {% csrf_token %}
+    <form action={% url 'crear_pelicula' %} method='POST' enctype='multipart/form-data'> {% csrf_token %}
         <table>
             {{form.as_table}}
         </table>

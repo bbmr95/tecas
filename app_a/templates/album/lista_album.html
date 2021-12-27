@@ -7,6 +7,7 @@
 
 {% block body %}
     <a href={% url 'crear_album' %}>Agregar álbum</a>
+    <a href={% url 'lista' %}>Regresar a las tecas</a>
 
     <ul>
         {% for album in object_list %}
@@ -17,6 +18,8 @@
                     <a href={% url 'eliminar_album' album.id %}>Eliminar</a>
                 </p>
             </li>
+        {% empty %}
+            <li><h3>Aún no hay álbumes registrados</h3></li>
         {% endfor %}
     </ul>
 

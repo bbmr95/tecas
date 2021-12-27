@@ -1,24 +1,28 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from ckeditor.widgets import CKEditorWidget
 
 class FormularioAlbum(forms.Form):
     titulo = forms.CharField()
     anio = forms.IntegerField()
     autor = forms.CharField()
     genero = forms.CharField()
+    portada = forms.ImageField()
 
 class FormularioLibro(forms.Form):
     titulo = forms.CharField()
     anio = forms.IntegerField()
     autor = forms.CharField()
     pais = forms.CharField()
+    portada = forms.ImageField()
 
 class FormularioPelicula(forms.Form):
     titulo = forms.CharField()
     anio = forms.IntegerField()
     dir = forms.CharField()
     dur = forms.IntegerField()
+    portada = forms.ImageField()
 
 class RegistroUsuario(UserCreationForm):
     email = forms.EmailField(label='Email')
@@ -43,5 +47,5 @@ class EditarUsuario(UserCreationForm):
         fields = ['first_name', 'last_name', 'password1', 'password2', 'email']
         help_text = {k: '' for k in fields}
 
-class AvatarForm(forms.Form):
-    avatar = forms.ImageField()
+# class AvatarForm(forms.Form):
+#     avatar = forms.ImageField()

@@ -44,3 +44,7 @@ li {
 a {
     text-decoration: none;
 }
+
+.media {
+    width:250px;
+}
