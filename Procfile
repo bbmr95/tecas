@@ -1,1 +1,1 @@
-web: gunicorn tecas.com
+web: gunicorn proyecto_final
