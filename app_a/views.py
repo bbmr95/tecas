@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView, CreateView 
+from django.views.generic.edit import DeleteView, CreateView, UpdateView
 
 from .models import Album, Libro, Pelicula#, Avatar
 from .forms import FormularioAlbum, FormularioPelicula, FormularioLibro, RegistroUsuario, EditarUsuario#, AvatarForm
@@ -111,7 +111,7 @@ def listas(request):
 class AlbumCreateView(CreateView):
     model = Album
     success_url = '/lista_album'
-    fields = ['titulo','anio','autor','genero', 'portada']
+    fields = '__all__'
     template_name = 'album/crear_album.html'
     
 class AlbumDeleteView(DeleteView):
@@ -126,12 +126,18 @@ class AlbumDetailView(DetailView):
 class AlbumListView(ListView):
     model = Album
     template_name = 'album/lista_album.html'
+    
+class AlbumEditView(UpdateView):
+    model = Album
+    fields = '__all__'
+    template_name = 'album/editar_album.html'
+    success_url = '/lista_album'
 
 
 class LibroCreateView(CreateView):
     model = Libro
     success_url = '/lista_libro'
-    fields = ['titulo','anio','autor','pais', 'portada']
+    fields = '__all__'
     template_name = 'libro/crear_libro.html'
     
 class LibroDeleteView(DeleteView):
@@ -151,7 +157,7 @@ class LibroListView(ListView):
 class PeliculaCreateView(CreateView):
     model = Pelicula
     success_url = '/lista_pelicula'
-    fields = ['titulo','anio','dir','dur', 'portada']
+    fields = '__all__'
     template_name = 'pelicula/crear_pelicula.html'
     
 class PeliculaDeleteView(DeleteView):

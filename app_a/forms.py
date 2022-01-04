@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from ckeditor.widgets import CKEditorWidget
+from ckeditor.fields import RichTextFormField
 
 class FormularioAlbum(forms.Form):
     titulo = forms.CharField()
@@ -9,6 +9,7 @@ class FormularioAlbum(forms.Form):
     autor = forms.CharField()
     genero = forms.CharField()
     portada = forms.ImageField()
+    review = RichTextFormField()
 
 class FormularioLibro(forms.Form):
     titulo = forms.CharField()

@@ -9,6 +9,7 @@ class Album(models.Model):
     autor = models.CharField(max_length=100)
     genero = models.CharField(max_length=50)
     portada = models.ImageField(upload_to='media/', null=True, blank=True)
+    review = RichTextField(blank=True, null=True)
     
     def __str__(self):
         return f'{self.autor} - {self.titulo} ({self.anio})'

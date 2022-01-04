@@ -11,6 +11,7 @@ urlpatterns = [
     path('crear_album/', views.AlbumCreateView.as_view(), name='crear_album'),
     path('eliminar_album/<int:pk>', views.AlbumDeleteView.as_view(), name='eliminar_album'),
     path('detalle_album/<int:pk>', views.AlbumDetailView.as_view(), name='detalle_album'),
+    path('editar_album/<int:pk>', views.AlbumEditView.as_view(), name='editar_album'),
     
     path('lista_libro/', views.LibroListView.as_view(), name='lista_libro'),
     path('crear_libro/', views.LibroCreateView.as_view(), name='crear_libro'),

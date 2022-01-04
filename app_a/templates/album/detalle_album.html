@@ -11,9 +11,12 @@
     <p>Artista: {{album.autor}}</p>
     <p>Año de publicación: {{album.anio}}</p>
     <p>Género: {{album.genero}}</p>
-    <p>
-        <a href={% url 'lista_album' %}>Regresar</a>
-    </p>
+    <br>
+    <p>Reseña: {{album.review|safe}}</p>
+    <ul>
+        <li style='display:inline-block'><a href={% url 'lista_album' %}>Regresar a la lista</a></li>
+        <li style='display:inline-block'><a href={% url 'editar_album' album.id %}>Editar post</a></li>
+    </ul>
 
 
 {% endblock %}
