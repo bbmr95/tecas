@@ -5,7 +5,7 @@ Realizado por Bruno Mosquera Rodríguez para la entrega del trabajo final del cu
 Para el 7mo commit:<br>
     - Agregar el editor de texto CKEditor, para poder agregar reviews a cada una de las entradas de los modelos (LISTO)<br>
     - Agregar la vista de edición para cada uno de los modelos. De esta manera, se podrá editar el contenido creado (LISTO)<br>
-    - Aplicar el "hosting" de Heroku ()<br>
+    - Aplicar el "hosting" de Heroku (LISTO)<br>
     - Mejorar las especificaciones de las views: ¿Cómo hacer para que cada adición en models automáticamente se vea en la página sin necesidad de variar lo que ya está escrito? (LISTO)<br>
 <br>
 Para el 8vo commit:<br>
