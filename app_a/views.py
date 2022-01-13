@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -108,16 +109,18 @@ def login_fail(request):
 def listas(request):
     return render(request, 'tem/lista.html')
 
-class AlbumCreateView(CreateView):
+class AlbumCreateView(SuccessMessageMixin, CreateView):
     model = Album
     success_url = '/lista_album'
     fields = '__all__'
     template_name = 'album/crear_album.html'
+    success_message = 'Álbum agregado!'
     
-class AlbumDeleteView(DeleteView):
+class AlbumDeleteView(SuccessMessageMixin, DeleteView):
     model = Album
     success_url = '/lista_album'
     template_name = 'album/borrar_album.html'
+    success_message = 'Álbum borrado!'
 
 class AlbumDetailView(DetailView):
     model = Album
@@ -126,24 +129,39 @@ class AlbumDetailView(DetailView):
 class AlbumListView(ListView):
     model = Album
     template_name = 'album/lista_album.html'
+
+def busquedaAlbum(request):
+    if request.GET.get('titulo'):
+        titulo = request.GET.get('titulo')
+        albums = Album.objects.filter(titulo__icontains=titulo)
+        
+        return render(request, 'album/buscar_album.html', {'albums':albums,'titulo':titulo})
+        
+    else:
+        respuesta = 'No hay datos para buscar'
+        return render(request, 'album/buscar_album.html', {'respuesta':respuesta})
     
-class AlbumEditView(UpdateView):
+    
+class AlbumEditView(SuccessMessageMixin, UpdateView):
     model = Album
     fields = '__all__'
     template_name = 'album/editar_album.html'
     success_url = '/lista_album'
+    success_message = 'Álbum editado!'
 
 
-class LibroCreateView(CreateView):
+class LibroCreateView(SuccessMessageMixin, CreateView):
     model = Libro
     success_url = '/lista_libro'
     fields = '__all__'
     template_name = 'libro/crear_libro.html'
+    success_message = 'Libro agregado!'
     
-class LibroDeleteView(DeleteView):
+class LibroDeleteView(SuccessMessageMixin, DeleteView):
     model = Libro
     success_url = '/lista_libro'
     template_name = 'libro/borrar_libro.html'
+    success_message = 'Libro borrado!'
 
 class LibroDetailView(DetailView):
     model = Libro
@@ -152,18 +170,38 @@ class LibroDetailView(DetailView):
 class LibroListView(ListView):
     model = Libro
     template_name = 'libro/lista_libro.html'
+    
+class LibroEditView(SuccessMessageMixin, UpdateView):
+    model = Libro
+    fields = '__all__'
+    template_name = 'libro/editar_libro.html'
+    success_url = '/lista_libro'
+    success_message = 'Libro editado!'
+    
+def busquedaLibro(request):
+    if request.GET.get('titulo'):
+        titulo = request.GET.get('titulo')
+        libros = Libro.objects.filter(titulo__icontains=titulo)
+        
+        return render(request, 'libro/buscar_libro.html', {'libros':libros,'titulo':titulo})
+        
+    else:
+        respuesta = 'No hay datos para buscar'
+        return render(request, 'libro/buscar_libro.html', {'respuesta':respuesta})
 
 
-class PeliculaCreateView(CreateView):
+class PeliculaCreateView(SuccessMessageMixin, CreateView):
     model = Pelicula
     success_url = '/lista_pelicula'
     fields = '__all__'
     template_name = 'pelicula/crear_pelicula.html'
+    success_message = 'Película agregada!'
     
-class PeliculaDeleteView(DeleteView):
+class PeliculaDeleteView(SuccessMessageMixin, DeleteView):
     model = Pelicula
     success_url = '/lista_pelicula'
     template_name = 'pelicula/borrar_pelicula.html'
+    success_message = 'Película borrada!'
 
 class PeliculaDetailView(DetailView):
     model = Pelicula
@@ -172,3 +210,21 @@ class PeliculaDetailView(DetailView):
 class PeliculaListView(ListView):
     model = Pelicula
     template_name = 'pelicula/lista_pelicula.html'
+
+class PeliculaEditView(SuccessMessageMixin, UpdateView):
+    model = Pelicula
+    fields = '__all__'
+    template_name = 'pelicula/editar_pelicula.html'
+    success_url = '/lista_pelicula'
+    success_message = 'Pelicula editada!'
+
+def busquedaPelicula(request):
+    if request.GET.get('titulo'):
+        titulo = request.GET.get('titulo')
+        peliculas = Pelicula.objects.filter(titulo__icontains=titulo)
+        
+        return render(request, 'pelicula/buscar_pelicula.html', {'peliculas':peliculas,'titulo':titulo})
+        
+    else:
+        respuesta = 'No hay datos para buscar'
+        return render(request, 'pelicula/buscar_pelicula.html', {'respuesta':respuesta})

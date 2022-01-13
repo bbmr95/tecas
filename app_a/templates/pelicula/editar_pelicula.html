@@ -1,0 +1,19 @@
+{% extends 'tem/base.html' %}
+
+{% block titulo %}
+    <title>editar libro</title>
+{% endblock %}
+
+
+{% block body %}
+    <a href={% url 'lista_pelicula' %}>Ir al listado de peliculas</a>
+
+    <form action={% url 'editar_pelicula' pelicula.id %} method='POST' enctype='multipart/form-data'> {% csrf_token %}
+
+        {{form.media}}
+        {{form.as_p}}
+
+        <input type='submit' placeholder='Editar Pelicula'>
+    </form>
+
+{% endblock %}

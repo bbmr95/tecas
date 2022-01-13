@@ -12,9 +12,12 @@
         <p>Artista: {{libro.autor}}</p>
         <p>País de procedencia: {{libro.pais}}</p>
         <p>Año de publicación: {{libro.anio}}</p>
-        <p>
-            <a href={% url 'lista_libro' %}>Regresar</a>
-        </p>
+        <br>
+    <p>Reseña: {{libro.review|safe}}</p>
+    <ul>
+        <li style='display:inline-block'><a href={% url 'lista_libro' %}>Regresar a la lista</a></li>
+        <li style='display:inline-block'><a href={% url 'editar_libro' libro.id %}>Editar post</a></li>
+    </ul>
     </div>
 
 

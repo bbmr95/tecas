@@ -6,8 +6,14 @@
 
 
 {% block body %}
+    {% for message in messages %}
+        <h3>{{message}}</h3>
+    {% endfor %}
+
+    <br>
     <a href={% url 'crear_pelicula' %}>Agregar película</a>
     <a href={% url 'lista' %}>Regresar a las tecas</a>
+    <a href={% url 'buscar_pelicula' %}>Buscar Álbum</a>
 
     <ul>
         {% for pelicula in object_list %}

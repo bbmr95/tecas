@@ -11,9 +11,12 @@
     <p>Director: {{pelicula.dir}}</p>
     <p>Año de estreno: {{pelicula.anio}}</p>
     <p>Duración (en minutros): {{pelicula.dur}}</p>
-    <p>
-        <a href={% url 'lista_pelicula' %}>Regresar</a>
-    </p>
+    <p>Soundtrack asociado:{{pelicula.ost}}</p>
+    <p>Reseña: {{pelicula.review|safe}}</p>
+    <ul>
+        <li style='display:inline-block'><a href={% url 'lista_pelicula' %}>Regresar a la lista</a></li>
+        <li style='display:inline-block'><a href={% url 'editar_pelicula' pelicula.id %}>Editar post</a></li>
+    </ul>
 
 
 {% endblock %}

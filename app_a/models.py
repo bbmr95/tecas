@@ -11,6 +11,7 @@ class Album(models.Model):
     portada = models.ImageField(upload_to='media/', null=True, blank=True)
     review = RichTextField(blank=True, null=True)
     
+    
     def __str__(self):
         return f'{self.autor} - {self.titulo} ({self.anio})'
 
@@ -20,6 +21,7 @@ class Libro(models.Model):
     autor = models.CharField(max_length=100)
     pais = models.CharField(max_length=60)
     portada = models.ImageField(upload_to='media/', null=True, blank=True)
+    review = RichTextField(blank=True, null=True)
     
     def __str__(self):
         return f'{self.autor} - {self.titulo} ({self.anio})'
@@ -30,6 +32,8 @@ class Pelicula(models.Model):
     dir = models.CharField(max_length=100)
     dur = models.IntegerField()
     portada = models.ImageField(upload_to='media/', null=True, blank=True)
+    review = RichTextField(blank=True, null=True)
+    ost = models.ForeignKey(Album, blank=True, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):
         return f'{self.dir} - {self.titulo} ({self.anio})'
